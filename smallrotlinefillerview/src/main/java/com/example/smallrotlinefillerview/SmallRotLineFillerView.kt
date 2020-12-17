@@ -44,8 +44,10 @@ fun Canvas.drawSmallRotLine(scale : Float, w : Float, h : Float, paint : Paint) 
     for (j in 0..(lines - 1)) {
         save()
         translate(gap * j, 0f)
+        save()
         rotate(-deg * sf2.divideScale(j, parts))
         drawLine(0f, 0f, gap * sf1.divideScale(j, parts), 0f, paint)
+        restore()
         if (j != (lines - 1)) {
             drawRect(RectF(0f, -gap * sf3.divideScale(j, parts), gap, 0f), paint)
         }
@@ -134,7 +136,7 @@ class SmallRotLineFillerView(ctx : Context) : View(ctx) {
         private var prev : SRLFNode? = null
 
         init {
-
+            addNeighbor()
         }
 
         fun addNeighbor() {
