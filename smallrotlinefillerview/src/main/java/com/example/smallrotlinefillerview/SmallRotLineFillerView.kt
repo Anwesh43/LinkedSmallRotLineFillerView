@@ -189,4 +189,27 @@ class SmallRotLineFillerView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SmallRotLineFillerView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val srlf : SmallRotLineFiller = SmallRotLineFiller(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            srlf.draw(canvas, paint)
+            animator.animate {
+                srlf.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            srlf.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
