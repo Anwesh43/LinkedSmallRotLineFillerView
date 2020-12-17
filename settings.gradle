@@ -1,0 +1,3 @@
+include ':smallrotlinefillerview'
+include ':app'
+rootProject.name = "LinkedSmallRotLineFillerView"
