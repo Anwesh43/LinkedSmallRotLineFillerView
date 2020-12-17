@@ -214,4 +214,12 @@ class SmallRotLineFillerView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : SmallRotLineFillerView {
+            val view : SmallRotLineFillerView = SmallRotLineFillerView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
